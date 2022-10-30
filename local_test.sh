@@ -3,7 +3,7 @@
 SERVICE=$1
 TEST_DELETED=$2
 
-TestFiles=("ulysses.epub" "01/ulysses.epub" "01/ulysses01.epub" "02/ulysses.epub" "02/ulysses02.epub")
+TestFiles=("Dac\ nhan\ tam.kepub.epub" "Sinh-ra-de-chay.kepub.epub")
 sha1=d07c5da10d4666766d1b796ba420cffca0ac440c
 TestSubdirs=false
 
@@ -54,7 +54,11 @@ then
     TestSubdirs=true
 elif [ "$SERVICE" = "gdrive" ]
 then
-    URL='https://drive.google.com/drive/folders/1Wi37shmjG56L1D8OSdIZstkUfnpTsdAp'
+    URL='https://drive.google.com/drive/folders/1--b-r3xo0DFznO8g_pqibTiXJaihPAwv'
+    TestSubdirs=true
+elif [ "$SERVICE" = "web" ]
+then
+    URL='http://192.168.1.8/list.php'
     TestSubdirs=true
 else
     echo "Unknown service"
@@ -66,7 +70,7 @@ fi
 mkdir -p $Lib
 for file in ${TestFiles[@]}
 do
-    rm "$Lib/$file"
+    rm "$Lib/$file"                                                           
 done
 echo $URL > $UserConfig
 
